@@ -1,4 +1,4 @@
-import React, { PureComponent } from "react";
+import React, { Component } from "react";
 import { connect } from "react-redux";
 import {
   getLoading,
@@ -8,7 +8,7 @@ import {
   fetchFormValuesAction
 } from "../../redux/form-module";
 
-export class WrappedFormContainer extends PureComponent {
+export class WrappedFormContainer extends Component {
   componentDidMount() {
     this.props.fetchSchema();
   }

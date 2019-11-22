@@ -32,8 +32,8 @@ const ObjectFieldTemplate = ({ properties, title, description, uiSchema }) => {
   );
 };
 
-const transformErrors = errors => {
-  const result = errors.map(error => {
+const transformErrors = errors =>
+  errors.map(error => {
     if (error.name === "pattern") {
       error.message = "Enter the correct value";
     } else if (error.name === "required") {
@@ -49,44 +49,44 @@ const transformErrors = errors => {
     return error;
   });
 
-  return result;
-};
+export const FormView = ({
+  mainSchema,
+  uiSchema,
+  isLoading,
+  handleChange,
+  extraErrors,
+  submitForm
+}) => {
+  console.log("TEST");
 
-export const FormView = memo(
-  ({
-    mainSchema,
-    uiSchema,
-    isLoading,
-    handleChange,
-    extraErrors,
-    submitForm
-  }) => {
-    return (
-      <div className="generated-form">
-        {console.log("GET extraErrors IN FORM COMPONENT", extraErrors) ||
-          (mainSchema && (
-            <Form
-              widgets={widgets}
-              schema={mainSchema}
-              transformErrors={transformErrors}
-              uiSchema={uiSchema}
-              onSubmit={submitForm}
-              FieldTemplate={CustomFieldTemplate}
-              ObjectFieldTemplate={ObjectFieldTemplate}
-              extraErrors={extraErrors}
-              showErrorList={false}
-              liveValidate={true}
-              onChange={handleChange}
-            >
-              <div className="button button--send">
-                <Button type="submit" color="primary" variant="contained">
-                  Save data
-                </Button>
-              </div>
-            </Form>
-          ))}
-        )}
-      </div>
-    );
-  }
-);
+  return (
+    <div className="generated-form">
+      {isLoading ? (
+        <p>Loading</p>
+      ) : (
+        console.log("GET extraErrors IN FORM COMPONENT", extraErrors) ||
+        (mainSchema && (
+          <Form
+            widgets={widgets}
+            schema={mainSchema}
+            transformErrors={transformErrors}
+            uiSchema={uiSchema}
+            onSubmit={submitForm}
+            FieldTemplate={CustomFieldTemplate}
+            ObjectFieldTemplate={ObjectFieldTemplate}
+            extraErrors={extraErrors}
+            showErrorList={false}
+            liveValidate={true}
+            onChange={handleChange}
+          >
+            <div className="button button--send">
+              <Button type="submit" color="primary" variant="contained">
+                Save data
+              </Button>
+            </div>
+          </Form>
+        ))
+      )}
+    </div>
+  );
+};

@@ -18,8 +18,6 @@ export class FormErrorsContainer extends PureComponent {
       errorsFromBack: this.state.extraErrors
     });
 
-    console.log("TEST");
-
     this.setState({ extraErrors: null });
   };
 
