@@ -1,0 +1,66 @@
+.generated-form {
+  margin-top: 40px;
+  align-self: center;
+  box-sizing: border-box;
+  background-color: #fff;
+  padding: 20px 30px;
+  width: 80%;
+  border-radius: 4px;
+  box-shadow: 0px 1px 5px 0px rgba(0, 0, 0, 0.2),
+    0px 2px 2px 0px rgba(0, 0, 0, 0.14), 0px 3px 1px -2px rgba(0, 0, 0, 0.12);
+}
+
+.object-field {
+  justify-content: space-between;
+
+  &--direction-row {
+    display: flex;
+
+    .field {
+      padding-right: 10px;
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+
+  &--direction-column {
+    display: flex;
+    flex-direction: column;
+
+    .field {
+      padding: 0;
+      &:last-child {
+        padding-right: 0;
+      }
+    }
+  }
+
+  &--with-padding {
+    padding-top: 20px;
+  }
+}
+
+.field {
+  flex-grow: 1;
+}
+
+.form-title {
+  font-size: 30px;
+  margin: 0;
+  padding: 0 0 10px 0;
+  text-align: center;
+}
+
+.form-description {
+  font-size: 20px;
+  text-align: center;
+  margin: 0;
+  padding: 10px 0;
+}
+
+.button {
+  &--send {
+    padding-top: 20px;
+  }
+}
