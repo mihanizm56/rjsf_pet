@@ -13,7 +13,9 @@ export class WrappedFormContainer extends Component {
     this.props.fetchSchema();
   }
 
-  submitForm = values => this.props.fetchFormValues(values.formData);
+  submitForm = values =>
+    console.log("FETCH VALUES", values) ||
+    this.props.fetchFormValues(values.formData);
 
   render() {
     const {

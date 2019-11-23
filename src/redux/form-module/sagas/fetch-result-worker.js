@@ -19,10 +19,10 @@ export function* formFetchValuesWorkerSaga(payload) {
 
   yield sleep(1000);
 
-  const { errors } = yield call(mockFormValuesRequest, payload);
+  const { error } = yield call(mockFormValuesRequest, payload);
 
-  console.log("RESPONCE ERROR", errors.firstRow.firstCol.name.__errors);
+  console.log("RESPONCE ERROR", error);
 
-  yield put(setErrorsAction(errors));
+  yield put(setErrorsAction(error));
   yield put(stopLoadingAction());
 }

@@ -103,3 +103,22 @@ export const testErrors = {
     }
   }
 };
+
+export const schemaTest = {
+  mainSchema: {
+    name: "test-schema-creds",
+    title: "Guest",
+    type: "object",
+    properties: {
+      firstName: { type: "string", pattern: "^[a-z ]{2,3}$" },
+      secondName: { type: "string", minLength: 2 },
+      workExperience: {
+        description: "Work experience in years",
+        type: "integer",
+        minimum: 0,
+        maximum: 100
+      }
+    },
+    required: ["firstName"]
+  }
+};

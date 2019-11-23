@@ -1,21 +1,20 @@
 import React from "react";
 import { FormErrorsContainer } from "../../containers/formHOC";
 import { FormContainer } from "./form-container";
-import { FormView } from "./form-view";
+import { FormViewUniforms } from "./form-view-uniforms";
 
 export const FormModule = () => {
   return (
     <FormContainer>
-      {({ submitForm, mainSchema, uiSchema, isLoading, errorsFromServer }) => (
+      {({ submitForm, mainSchema, isLoading, errorsFromServer }) => (
         <FormErrorsContainer errorsFromServer={errorsFromServer}>
-          {({ extraErrors, changeErrors }) => (
-            <FormView
+          {({ extraErrors, handleChangeField }) => (
+            <FormViewUniforms
               submitForm={submitForm}
               mainSchema={mainSchema}
-              uiSchema={uiSchema}
               isLoading={isLoading}
-              extraErrors={extraErrors}
-              handleChange={changeErrors}
+              externalErrors={extraErrors}
+              handleChangeField={handleChangeField}
             />
           )}
         </FormErrorsContainer>

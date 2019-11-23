@@ -1,6 +1,6 @@
-import { schema, testErrors } from "./schema";
+import { schema, testErrors, schemaTest } from "./schema";
 
-export const schemaRequest = page => Promise.resolve({ schema });
+export const schemaRequest = page => Promise.resolve({ schema: schemaTest });
 
 // export const mockFormValuesRequest = () =>
 //   Promise.resolve({ errors: testErrors });
