@@ -1,5 +1,5 @@
 import React from "react";
-import { FormErrorsContainer } from "../../containers/formHOC";
+import { FormErrorsContainer } from "../../containers/formErrorsContainer/formErrorsContainer";
 import { FormContainer } from "./form-container";
 import { FormViewUniforms } from "./form-view-uniforms";
 
@@ -8,13 +8,13 @@ export const FormModule = () => {
     <FormContainer>
       {({ submitForm, mainSchema, isLoading, errorsFromServer }) => (
         <FormErrorsContainer errorsFromServer={errorsFromServer}>
-          {({ extraErrors, handleChangeField }) => (
+          {({ externalErrors, handleChangeErrors }) => (
             <FormViewUniforms
               submitForm={submitForm}
               mainSchema={mainSchema}
               isLoading={isLoading}
-              externalErrors={extraErrors}
-              handleChangeField={handleChangeField}
+              externalErrors={externalErrors}
+              handleChangeErrors={handleChangeErrors}
             />
           )}
         </FormErrorsContainer>

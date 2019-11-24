@@ -112,13 +112,8 @@ export const schemaTest = {
     properties: {
       firstName: { type: "string", pattern: "^[a-z ]{2,3}$" },
       secondName: { type: "string", minLength: 2 },
-      workExperience: {
-        description: "Work experience in years",
-        type: "integer",
-        minimum: 0,
-        maximum: 100
-      }
+      thirdName: { type: "string" }
     },
-    required: ["firstName"]
+    required: ["firstName", "secondName"]
   }
 };

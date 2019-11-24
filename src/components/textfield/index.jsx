@@ -56,7 +56,7 @@ import TextFieldMaterial from "@material-ui/core/TextField";
 //   );
 // };
 
-export const TextField = props => {
+export const TextField = (props, special) => {
   const {
     onChange,
     placeholder,
@@ -68,7 +68,7 @@ export const TextField = props => {
     name,
     value
   } = props;
-  // console.log("TextField props", props);
+  // console.log("TextField props", special);
   // console.log("TextField errorMessage", errorMessage);
 
   const handleChange = ({ target: { value } }) => {
