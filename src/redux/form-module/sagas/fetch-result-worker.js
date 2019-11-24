@@ -17,12 +17,12 @@ export function* formFetchValuesWorkerSaga(payload) {
 
   yield put(startLoadingAction());
 
-  yield sleep(1000);
+  // yield sleep(1000);
 
-  const { error } = yield call(mockFormValuesRequest, payload);
+  const { errors } = yield call(mockFormValuesRequest, payload);
 
-  console.log("RESPONCE ERROR", error);
+  console.log("RESPONCE ERRORS", errors);
 
-  yield put(setErrorsAction(error));
+  yield put(setErrorsAction(errors));
   yield put(stopLoadingAction());
 }

@@ -95,13 +95,17 @@ export const schema = {
   }
 };
 
+// export const testErrors = {
+//   firstRow: {
+//     firstCol: {
+//       name: { __errors: ["test error"] },
+//       number: { __errors: ["test error"] }
+//     }
+//   }
+// };
+
 export const testErrors = {
-  firstRow: {
-    firstCol: {
-      name: { __errors: ["test error"] },
-      number: { __errors: ["test error"] }
-    }
-  }
+  details: [{ dataPath: ".firstName", message: "default error" }]
 };
 
 export const schemaTest = {
@@ -112,7 +116,7 @@ export const schemaTest = {
     properties: {
       firstName: { type: "string", pattern: "^[a-z ]{2,3}$" },
       secondName: { type: "string", minLength: 2 },
-      thirdName: { type: "string" }
+      thirdName: { type: "string", minLength: 2 }
     },
     required: ["firstName", "secondName"]
   }

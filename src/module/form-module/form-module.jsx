@@ -7,14 +7,17 @@ export const FormModule = () => {
   return (
     <FormContainer>
       {({ submitForm, mainSchema, isLoading, errorsFromServer }) => (
-        <FormErrorsContainer errorsFromServer={errorsFromServer}>
-          {({ externalErrors, handleChangeErrors }) => (
+        <FormErrorsContainer
+          errorsFromServer={errorsFromServer}
+          schema={mainSchema}
+        >
+          {({ externalErrors, schemaValidator }) => (
             <FormViewUniforms
               submitForm={submitForm}
-              mainSchema={mainSchema}
+              schema={mainSchema}
               isLoading={isLoading}
               externalErrors={externalErrors}
-              handleChangeErrors={handleChangeErrors}
+              schemaValidator={schemaValidator}
             />
           )}
         </FormErrorsContainer>

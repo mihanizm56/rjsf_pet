@@ -4,87 +4,82 @@ import { JSONSchemaBridge } from "uniforms-bridge-json-schema";
 import { connectField } from "uniforms";
 import { TextField } from "../../components/textfield";
 import isEqual from "lodash/isEqual";
-import Ajv from "ajv";
+// import Ajv from "ajv";
 import "./styles/index.scss";
 
-const ajv = new Ajv({ allErrors: true, useDefaults: true });
+// const ajv = new Ajv({ allErrors: true, useDefaults: true });
 
-const createValidator = ({ schema, handleChangeErrors }) => {
-  const validator = ajv.compile(schema);
+// const createValidator = ({ schema, handleChangeErrors }) => {
+//   const validator = ajv.compile(schema);
 
-  return model => {
-    validator(model);
+//   return model => {
+//     validator(model);
 
-    if (validator.errors && validator.errors.length) {
-      const details = validator.errors.reduce((acc, error) => {
-        if (error.keyword === "pattern") {
-          const pathParamsName = [...error.dataPath.split(".")].pop();
+//     if (validator.errors && validator.errors.length) {
+//       const details = validator.errors.reduce((acc, error) => {
+//         if (error.keyword === "pattern") {
+//           const pathParamsName = [...error.dataPath.split(".")].pop();
 
-          error.field = pathParamsName;
-          error.message = "enter the correct data";
-          acc.push(error);
-        }
+//           error.field = pathParamsName;
+//           error.message = "enter the correct data";
+//           acc.push(error);
+//         }
 
-        if (error.keyword === "required") {
-          error.field = error.params.missingProperty;
-          error.message = "this value is required";
-          acc.push(error);
-        }
+//         if (error.keyword === "required") {
+//           error.field = error.params.missingProperty;
+//           error.message = "this value is required";
+//           acc.push(error);
+//         }
 
-        if (error.keyword === "minLength") {
-          const pathParamsName = [...error.dataPath.split(".")].pop();
+//         if (error.keyword === "minLength") {
+//           const pathParamsName = [...error.dataPath.split(".")].pop();
 
-          error.field = pathParamsName;
-          error.message = "this value is too short";
-          acc.push(error);
-        }
+//           error.field = pathParamsName;
+//           error.message = "this value is too short";
+//           acc.push(error);
+//         }
 
-        return acc;
-      }, []);
+//         return acc;
+//       }, []);
 
-      console.log("GET VALIDATOR details", details);
+//       console.log("GET VALIDATOR details", details);
 
-      return handleChangeErrors({ details });
-    } else {
-      return handleChangeErrors({ details: [] });
-    }
-  };
-};
+//       return handleChangeErrors({ details });
+//     } else {
+//       return handleChangeErrors({ details: [] });
+//     }
+//   };
+// };
 
 const TextFieldMaterial = connectField(TextField);
 
 export class FormViewUniforms extends Component {
-  shouldComponentUpdate(nextProps, nextState) {
-    return Boolean(
-      !isEqual(nextProps, this.props) || !isEqual(nextState, this.state)
-    );
-  }
+  // shouldComponentUpdate(nextProps, nextState) {
+  //   return Boolean(
+  //     !isEqual(nextProps, this.props) || !isEqual(nextState, this.state)
+  //   );
+  // }
 
   render() {
     const {
-      mainSchema,
-      // uiSchema,
-      // isLoading,
-      handleChangeErrors,
+      schema,
       externalErrors,
-      submitForm
+      schemaValidator,
+      submitForm,
+      isLoading
     } = this.props;
 
-    console.log("externalErrors", externalErrors);
-
-    const schemaValidator =
-      mainSchema && createValidator({ schema: mainSchema, handleChangeErrors });
+    console.log("externalErrors in Form", externalErrors);
 
     const jsonSchemaBridge =
-      mainSchema && new JSONSchemaBridge(mainSchema, schemaValidator);
+      schema && new JSONSchemaBridge(schema, schemaValidator);
 
     return (
       <div className="generated-form">
-        {mainSchema && (
+        {schema && (
           <AutoForm
             validate="onChange"
             onSubmit={submitForm}
-            // onChange={handleChangeErrors}
             error={externalErrors}
             showInlineError={true}
             schema={jsonSchemaBridge}

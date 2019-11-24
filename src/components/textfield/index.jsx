@@ -80,8 +80,8 @@ export const TextField = (props, special) => {
       fullWidth
       disabled={disabled}
       placeholder={placeholder}
-      error={Boolean(error)}
-      helperText={errorMessage}
+      error={touched && Boolean(error)}
+      helperText={touched && errorMessage}
       type={type}
       name={name}
       onChange={handleChange}
