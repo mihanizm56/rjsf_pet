@@ -8,6 +8,7 @@ import {
   removeErrorsAction
 } from "../actions";
 import { schemaRequest } from "../../../services/requests";
+import { batchActions } from "redux-batched-actions";
 
 export function* formWorkerSaga() {
   console.log("formWorkerSaga goes");
@@ -16,7 +17,5 @@ export function* formWorkerSaga() {
 
   const { schema } = yield call(schemaRequest);
 
-  yield put(setSchemaAction(schema));
-
-  yield put(stopLoadingAction());
+  yield put(batchActions([setSchemaAction(schema), stopLoadingAction()]));
 }
