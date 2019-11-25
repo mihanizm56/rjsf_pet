@@ -27,10 +27,11 @@ export const TextField = props => {
     onBlur,
     onFocus,
     schema: { type },
-    rawErrors
+    rawErrors,
+    value,
     // options: { backendError }
   } = props;
-  console.log("TextField props", props);
+  // console.log("TextField props", props);
   const error = Boolean(rawErrors && rawErrors.length);
   const errorText = error && rawErrors[0];
 
@@ -46,7 +47,7 @@ export const TextField = props => {
         error={error}
         helperText={errorText}
         type={type}
-        // value={value}
+        value={value}
         onChange={handleChange}
         onBlur={handleBlur}
         onFocus={handleFocus}
