@@ -45,36 +45,33 @@ const ObjectFieldTemplate = ({ properties, title, description, uiSchema }) => {
   );
 };
 
-export const WrappedForm = React.memo(({
-  schema,
-  uiSchema,
-  formData,
-  extraErrors,
-  onChange,
-  onSubmit,
-}) => {
-  return (
-    <div style={{ margin: '40px' }}>
-      <Form
-        schema={schema}
-        uiSchema={uiSchema}
-        formData={formData}
-        extraErrors={extraErrors}
-        showErrorList={false}
-        widgets={widgets}
-        liveValidate={true}
-        FieldTemplate={CustomFieldTemplate}
-        ObjectFieldTemplate={ObjectFieldTemplate}
-        transformErrors={transformErrors}
-        onChange={onChange}
-        onSubmit={onSubmit}
-      >
-        <div className="button button--send">
-          <Button type="submit" color="primary" variant="contained">
-            Save data
-          </Button>
-        </div>
-      </Form>
-    </div>
-  );
-});
+export const WrappedForm = React.memo(
+  ({ schema, uiSchema, formData, extraErrors, onChange, onSubmit }) => {
+    console.log("RENDER VIEW FORM", formData);
+
+    return (
+      <div style={{ margin: "40px" }}>
+        <Form
+          schema={schema}
+          uiSchema={uiSchema}
+          formData={formData}
+          extraErrors={extraErrors}
+          showErrorList={false}
+          widgets={widgets}
+          liveValidate={true}
+          FieldTemplate={CustomFieldTemplate}
+          ObjectFieldTemplate={ObjectFieldTemplate}
+          transformErrors={transformErrors}
+          onChange={onChange}
+          onSubmit={onSubmit}
+        >
+          <div className="button button--send">
+            <Button type="submit" color="primary" variant="contained">
+              Save data
+            </Button>
+          </div>
+        </Form>
+      </div>
+    );
+  }
+);

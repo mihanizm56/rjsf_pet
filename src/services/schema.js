@@ -16,7 +16,7 @@ export const schema = {
             properties: {
               name: {
                 type: "string",
-                pattern: "^[a-z ]{2,3}$",
+                pattern: "^[a-z ]{2,3}$"
               },
               number: {
                 type: "string"
@@ -98,8 +98,8 @@ export const schema = {
 export const testErrors = {
   firstRow: {
     firstCol: {
-      name: { __errors: ["test error"] },
-      // number: { __errors: ["test error"] }
+      name: { __errors: ["test name error"] },
+      number: { __errors: ["test number error"] }
     }
   }
 };
