@@ -1,24 +1,5 @@
-import * as React from "react";
+import React from "react";
 import TextFieldMaterial from "@material-ui/core/TextField";
-// export const TextField = ({
-//   input: { type, name, onChange, value },
-//   placeholder,
-//   meta: { touched, invalid, error, submitError },
-//   formError
-// }) => {
-//   return (
-//     <TextFieldMaterial
-//       fullWidth
-//       placeholder={placeholder}
-//       error={Boolean((touched && invalid) || formError)}
-//       helperText={(touched && (error || submitError)) || formError}
-//       type={type}
-//       name={name}
-//       onChange={onChange}
-//       value={value}
-//     />
-//   );
-// };
 
 export const TextField = props => {
   const {
@@ -28,10 +9,8 @@ export const TextField = props => {
     onFocus,
     schema: { type },
     rawErrors,
-    value,
-    // options: { backendError }
+    value
   } = props;
-  // console.log("TextField props", props);
   const error = Boolean(rawErrors && rawErrors.length);
   const errorText = error && rawErrors[0];
 

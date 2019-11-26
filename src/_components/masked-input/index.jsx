@@ -28,32 +28,23 @@ export const MaskedInput = ({
   onChange,
   onBlur,
   onFocus,
-  schema: { type },
   rawErrors
 }) => {
   const submitError = Boolean(rawErrors) && rawErrors[0];
 
-  const handleChange = event => {
-    const value = event.target.value;
+  const handleChange = ({ target: { value } }) => onChange(value);
+  const handleBlur = ({ target: { value } }) => onBlur(value);
+  const handleFocus = ({ target: { value } }) => onFocus(value);
 
-    onChange(value);
-  };
-
-  const handleBlur = event => {
-    const value = event.target.value;
-
-    onBlur(value);
-  };
-
-  const handleFocus = event => {
-    const value = event.target.value;
-
-    onFocus(value);
+  const inputProps = {
+    onChange: handleChange,
+    onBlur: handleBlur,
+    onFocus: handleFocus
   };
 
   return (
     <div className="text-field-material">
-      <InputMask mask="9999 9999 9999 9999" maskChar=" ">
+      <InputMask mask="9999 9999 9999 9999" maskChar=" " {...inputProps}>
         {() => (
           <TextField
             fullWidth

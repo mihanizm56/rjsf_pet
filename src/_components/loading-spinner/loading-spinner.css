@@ -1,0 +1,24 @@
+.loading-spinner {
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: white;
+}
+
+.loading-spinner__spiner {
+  height: 150px;
+  width: 150px;
+  animation: circleLoadingAnimation 2s linear infinite;
+}
+
+@keyframes circleLoadingAnimation {
+  from {
+    transform: rotate3d(0, 0, 1, -180deg);
+  }
+
+  to {
+    transform: rotate3d(0, 0, 1, 180deg);
+  }
+}

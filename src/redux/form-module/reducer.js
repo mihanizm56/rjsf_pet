@@ -3,7 +3,6 @@ import {
   START_SEND_LOADING,
   STOP_SEND_LOADING,
   SET_SCHEMA,
-  REMOVE_SCHEMA,
   SET_ERRORS,
   REMOVE_ERRORS
 } from "./actions";
