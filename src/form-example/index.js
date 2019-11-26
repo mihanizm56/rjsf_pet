@@ -7,7 +7,6 @@ import isObject from "lodash/isObject";
 import { WrappedForm } from "./wrapped-form";
 import { schema, testErrors } from "../services/schema";
 
-// dp eql in recursion => on my gosh
 const getDiff = (object, base) => {
   const changes = (object, base) => {
     return transform(object, function(result, value, key) {
@@ -22,7 +21,6 @@ const getDiff = (object, base) => {
   return changes(object, base);
 };
 
-// fkin amazing
 const getChangedPath = formData => {
   const firstKey = Object.keys(formData)[0];
   return `${firstKey}${
@@ -59,7 +57,12 @@ export const FormExample = React.memo(() => {
       console.log("ONCHANGE");
       console.log(e);
       const ifFormDataHasValues = checkIfFormDataHasValues(e.formData);
-      console.log("ifFormDataHasValues", ifFormDataHasValues);
+
+      // поле e.edit есть только при первом рендере - потом при изменении формы его нет
+      if (e.edit === false) {
+        console.log("INITIAL RENDERING");
+        return;
+      }
 
       if (formData) {
         // Объект изменения поля
@@ -77,6 +80,8 @@ export const FormExample = React.memo(() => {
 
       // проверяем есть ли любые поля со строками в formData при самом первом вызове формы
       if (ifFormDataHasValues) {
+        console.log("FORMDATA HAS ANY VALUE AND NOT INITIAL", e.formData);
+
         setFormData(e.formData);
       }
     },

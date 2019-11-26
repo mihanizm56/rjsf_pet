@@ -12,10 +12,11 @@ export const schema = {
           firstCol: {
             title: "",
             type: "object",
-            required: ["name"],
+            required: ["name", "number"],
             properties: {
               name: {
                 type: "string",
+                default: "as",
                 pattern: "^[a-z ]{2,3}$"
               },
               number: {
