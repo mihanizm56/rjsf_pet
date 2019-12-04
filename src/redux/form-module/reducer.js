@@ -10,7 +10,7 @@ import {
 const initialState = {
   isLoading: false,
   schema: {},
-  errors: {}
+  errors: null
 };
 
 const reducer = handleActions(
@@ -33,7 +33,7 @@ const reducer = handleActions(
     }),
     [REMOVE_ERRORS]: state => ({
       ...state,
-      errors: []
+      errors: null
     })
   },
   initialState

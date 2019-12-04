@@ -3,7 +3,8 @@ import { withTheme } from "react-jsonschema-form";
 import { Theme as MuiTheme } from "rjsf-material-ui";
 import classNames from "classnames/bind";
 import Button from "@material-ui/core/Button";
-import { LoadingSpinner } from "../components/loading-spinner";
+import { LoadingSpinner } from "../_components/loading-spinner";
+import { ErrorBox } from "./errors-box";
 import { widgets } from "./widgets";
 import "./index.scss";
 
@@ -50,49 +51,46 @@ const ObjectFieldTemplate = ({ properties, title, description, uiSchema }) => {
   );
 };
 
-export const WrappedForm = React.memo(
+export const FormComponent = React.memo(
   ({
     schema,
     uiSchema,
     formData,
-    extraErrors,
+    serverErrors,
     onChange,
     onSubmit,
     isLoading
-  }) => {
-    console.log("RENDER VIEW FORM", extraErrors);
-
-    return (
-      <div className="generated-form">
-        {schema && (
-          <Form
-            schema={schema}
-            uiSchema={uiSchema}
-            formData={formData}
-            extraErrors={extraErrors}
-            showErrorList={false}
-            widgets={widgets}
-            liveValidate={true}
-            FieldTemplate={CustomFieldTemplate}
-            ObjectFieldTemplate={ObjectFieldTemplate}
-            transformErrors={transformErrors}
-            onChange={onChange}
-            onSubmit={onSubmit}
-          >
-            <div className="button button--send">
-              <Button type="submit" color="primary" variant="contained">
-                Save data
-              </Button>
-            </div>
-          </Form>
-        )}
-
-        {isLoading && (
-          <div className="loading-spinner-container">
-            <LoadingSpinner />
+  }) => (
+    <div className="generated-form">
+      {schema && (
+        <Form
+          formData={formData}
+          schema={schema}
+          uiSchema={uiSchema}
+          showErrorList={false}
+          widgets={widgets}
+          liveValidate={true}
+          FieldTemplate={CustomFieldTemplate}
+          ObjectFieldTemplate={ObjectFieldTemplate}
+          transformErrors={transformErrors}
+          onSubmit={onSubmit}
+          onChange={onChange}
+        >
+          <div className="button button--send">
+            <Button type="submit" color="primary" variant="contained">
+              Save data
+            </Button>
           </div>
-        )}
-      </div>
-    );
-  }
+        </Form>
+      )}
+
+      {serverErrors && <ErrorBox serverErrors={serverErrors} />}
+
+      {isLoading && (
+        <div className="loading-spinner-container">
+          <LoadingSpinner />
+        </div>
+      )}
+    </div>
+  )
 );

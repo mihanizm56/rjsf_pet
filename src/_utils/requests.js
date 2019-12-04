@@ -1,4 +1,9 @@
-import { schema, testErrors } from "./schema";
+import { schema } from "./schema";
+
+export const testErrors = {
+  cvv: "test cvv error",
+  "expired-date": "test date error"
+};
 
 export const schemaRequest = page => Promise.resolve({ schema });
 

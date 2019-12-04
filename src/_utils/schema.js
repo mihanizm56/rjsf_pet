@@ -87,21 +87,11 @@ export const schema = {
     },
     secondRow: {
       direction: "row",
-      withPadding: true,
       firstCol: {
         direction: "column",
         login: { "ui:widget": "text" },
         password: { "ui:widget": "password-input" }
       }
-    }
-  }
-};
-
-export const testErrors = {
-  firstRow: {
-    secondCol: {
-      cvv: { __errors: ["test cvv error"] },
-      "expired-date": { __errors: ["test date error"] }
     }
   }
 };
