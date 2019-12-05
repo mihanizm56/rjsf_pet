@@ -1,7 +1,7 @@
-import { TextField } from "../components/textfield";
-import { DatePicker } from "../components/date-picker";
-import { MaskedInput } from "../components/masked-input";
-import { PasswordInput } from "../components/password-input";
+import { TextField } from "../_components/textfield";
+import { DatePicker } from "../_components/date-picker";
+import { MaskedInput } from "../_components/masked-input";
+import { PasswordInput } from "../_components/password-input";
 
 export const widgets = {
   text: TextField,

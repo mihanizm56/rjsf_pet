@@ -5,7 +5,7 @@ import {
   setErrorsAction,
   removeErrorsAction
 } from "../actions";
-import { mockFormValuesRequest } from "../../../services/requests";
+import { mockFormValuesRequest } from "../../../_utils/requests";
 
 const sleep = ms =>
   new Promise(res => {

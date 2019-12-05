@@ -3,7 +3,7 @@ import { withTheme } from "react-jsonschema-form";
 import { Theme as MuiTheme } from "rjsf-material-ui";
 import classNames from "classnames/bind";
 import Button from "@material-ui/core/Button";
-import { LoadingSpinner } from "../components/loading-spinner";
+import { LoadingSpinner } from "../_components/loading-spinner";
 import { widgets } from "./widgets";
 import "./index.scss";
 

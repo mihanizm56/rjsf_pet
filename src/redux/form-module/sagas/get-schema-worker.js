@@ -4,9 +4,9 @@ import {
   stopLoadingAction,
   setSchemaAction
 } from "../actions";
-import { schemaRequest } from "../../../services/requests";
+import { schemaRequest } from "../../../_utils/requests";
 
-import { sleep } from "../../../services/sleep";
+import { sleep } from "../../../_utils/sleep";
 
 export function* formWorkerSaga() {
   console.log("formWorkerSaga goes");
